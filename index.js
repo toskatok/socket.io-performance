@@ -11,8 +11,8 @@ const app = require('http').createServer(handler);
 const io = require('socket.io')(app);
 const fs = require('fs')
 
-app.listen(3000, function(){
-  console.log('listening on *:3000');
+app.listen(1820, function(){
+  console.log('listening on *:1820');
 });
 
 function handler (req, res) {
