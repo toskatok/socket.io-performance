@@ -1,0 +1,19 @@
+{
+  "name": "socket.io-perfomace",
+  "version": "0.0.1",
+  "description": "Let's evaluate socket.io performance",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bambil/socket.io-perfomace.git"
+  },
+  "author": "Parham Alvani <parham.alvani@gmail.com>",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/bambil/socket.io-perfomace/issues"
+  },
+  "homepage": "https://github.com/bambil/socket.io-perfomace#readme"
+}
