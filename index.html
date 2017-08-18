@@ -13,20 +13,25 @@
       </p>
     </div>
     <script>
+      /*
+      global
+      Vue
+      io
+      */
       const vm = new Vue({
         el: '#performance',
         data: {
           responseTime: 0
         }
-      });
+      })
 
-      const socket = io(window.location.protocol + '//' + window.location.hostname + ':' + window.location.port);
+      const socket = io(window.location.protocol + '//' + window.location.hostname + ':' + window.location.port)
       socket.on('message', function (msg) {
         socket.emit('emessage', msg)
-      });
+      })
       socket.on('performance', function (msg) {
-        vm.responseTime = msg.responseTime;
-      });
+        vm.responseTime = msg.responseTime
+      })
     </script>
   </body>
 </html>
