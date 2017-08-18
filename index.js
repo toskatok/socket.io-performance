@@ -29,12 +29,10 @@ function handler (req, res) {
 }
 
 io.on('connection', function(socket){
-  console.log('a user connected');
-  socket.on('my message', function(msg){
-    console.log('my message: ' + msg);
-    io.emit('my message', msg);
-  });
-  socket.on('disconnect', function(){
-    console.log('user disconnected');
-  });
+  console.log('new connection');
+  setInterval(() => {
+    socket.emit('message', {
+      time: Date.now()
+    });
+  }, 100)
 });
