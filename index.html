@@ -1,0 +1,28 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Socket.IO Performance Evaluation</title>
+    <style>
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      body { font: 13px Helvetica, Arial; }
+      form { background: #000; padding: 3px; position: fixed; bottom: 0; width: 100%; }
+      #messages { list-style-type: none; margin: 0; padding: 0; }
+      #messages li { padding: 5px 10px; }
+      #messages li:nth-child(odd) { background: #eee; }
+    </style>
+  </head>
+  <script src="/socket.io/socket.io.js"></script>
+    <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
+    <script>
+      const socket = io(window.location.protocol + '//' + window.location.hostname + ':' + window.location.port);
+      socket.on('message', function(msg){
+        let diff = Date.now() - msg.time;
+        $('#messages').append($('<li>').text(diff));
+      });
+    </script>
+  <body>
+      <h1> Realtime Traps: </h1>
+      <ul id="messages">
+      </ul>
+  </body>
+</html>
