@@ -7,32 +7,39 @@
  * | File Name:     index.js
  * +===============================================
  */
-const app = require('http').createServer(handler);
-const io = require('socket.io')(app);
+const app = require('http').createServer(handler)
+const io = require('socket.io')(app)
 const fs = require('fs')
+const path = require('path')
 
-app.listen(1820, function(){
-  console.log('listening on *:1820');
-});
+app.listen(1820, function () {
+  console.log('listening on *:1820')
+})
 
 function handler (req, res) {
-  fs.readFile(__dirname + '/index.html',
-  function (err, data) {
-    if (err) {
-      res.writeHead(500);
-      return res.end('Error loading index.html');
-    }
+  fs.readFile(path.join(__dirname, '/index.html'),
+    function (err, data) {
+      if (err) {
+        res.writeHead(500)
+        return res.end('Error loading index.html')
+      }
 
-    res.writeHead(200);
-    res.end(data);
-  });
+      res.writeHead(200)
+      res.end(data)
+    })
 }
 
-io.on('connection', function(socket){
-  console.log('new connection');
+io.on('connection', function (socket) {
+  console.log('new connection')
   setInterval(() => {
     socket.emit('message', {
       time: Date.now()
-    });
+    })
   }, 100)
-});
+  socket.on('emessage', function (msg) {
+    let diff = Date.now() - msg.time
+    socket.emit('performance', {
+      responseTime: diff / 2
+    })
+  })
+})
