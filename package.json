@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/bambil/socket.io-perfomace/issues"
   },
-  "homepage": "https://github.com/bambil/socket.io-perfomace#readme"
+  "homepage": "https://github.com/bambil/socket.io-perfomace#readme",
+  "dependencies": {
+    "socket.io": "^2.0.3"
+  }
 }
