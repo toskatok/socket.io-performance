@@ -12,3 +12,6 @@ from time difference between first and second message we can estimate round-trip
 | RTT | Access |
 |:---:|:-------|
 | 2 - 4 ms | Local |
+
+## Useful Links
+- http://drewww.github.io/socket.io-benchmarking/
