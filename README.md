@@ -1,4 +1,4 @@
-# socket.io-perfomace
+# socket.io-performance
 ## Introduction
 In three year of platform development we always face same problem, what do we do with real-time applications.
 In these three years we have always used [socket.io](https://socket.io/) as our realtime solution, but after all we have time for check
