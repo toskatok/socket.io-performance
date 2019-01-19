@@ -1,4 +1,7 @@
 # socket.io-performance
+
+[![](https://images.microbadger.com/badges/image/toskatok/socket.io-performance.svg)](https://microbadger.com/images/toskatok/socket.io-performance "Get your own image badge on microbadger.com")
+
 ## Introduction
 In three year of platform development we always face same problem, what do we do with real-time applications.
 In these three years we have always used [socket.io](https://socket.io/) as our realtime solution, but after all we have time for check
