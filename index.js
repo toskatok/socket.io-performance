@@ -31,15 +31,7 @@ function handler (req, res) {
 
 io.on('connection', function (socket) {
   console.log('new connection')
-  setInterval(() => {
-    socket.emit('message', {
-      time: Date.now()
-    })
-  }, 100)
-  socket.on('emessage', function (msg) {
-    let diff = Date.now() - msg.time
-    socket.emit('performance', {
-      responseTime: diff / 2
-    })
+  socket.on('message', function (msg) {
+    socket.emit('emessage', msg)
   })
 })
