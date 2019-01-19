@@ -9,28 +9,37 @@
     <h1>Realtime Traps:</h1>
     <div id="performance">
       <p>
-        Response Time: {{responseTime}}
+        Response Time: {{ responseTime }}<br>
+        Average Response Time: {{ responseTimeAvg }}
       </p>
+      <button v-on:click="send">Send</button>
     </div>
     <script>
       /*
       global
       Vue
       io
-      */
+       */
+      const socket = io(window.location.protocol + '//' + window.location.hostname + ':' + window.location.port)
       const vm = new Vue({
         el: '#performance',
         data: {
-          responseTime: 0
+          responseTime: 0,
+          responseTimeAvg: 0
+        },
+        methods: {
+          send: function (event) {
+            socket.emit('message', {
+              time: Date.now()
+            })
+          }
         }
       })
 
-      const socket = io(window.location.protocol + '//' + window.location.hostname + ':' + window.location.port)
-      socket.on('message', function (msg) {
-        socket.emit('emessage', msg)
-      })
-      socket.on('performance', function (msg) {
-        vm.responseTime = msg.responseTime
+      socket.on('emessage', function (msg) {
+        let diff = Date.now() - msg.time
+        vm.responseTime = diff / 2
+        vm.responseTimeAvg = vm.responseTimeAvg * 0.1 + vm.responseTime * 0.9
       })
     </script>
   </body>
